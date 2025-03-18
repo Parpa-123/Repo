@@ -6,15 +6,25 @@
     <groupId>com.example</groupId>
     <artifactId>myswingapp</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
-    <name>My Swing Application</name>
-    <description>A standalone Java Swing application</description>
+    <name>My Web Application</name>
+    <description>A Java Web Application</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+    <dependencies>
+        <!-- Servlet API (Required for WAR) -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -29,17 +39,13 @@
                 </configuration>
             </plugin>
 
-            <!-- JAR Plugin -->
+            <!-- WAR Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.2</version>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.example.Main</mainClass>
-                        </manifest>
-                    </archive>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
         </plugins>
